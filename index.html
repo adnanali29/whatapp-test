@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Addy Fitness WhatsApp Automation Presentation Suite</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons (Loaded via CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    /* Hide scrollbars for ultra-clean presentation */
+    .scrollbar-none::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-none {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .style-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .style-scrollbar::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    .style-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+    .dark .style-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    @keyframes slide-up {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .animate-slide-up {
+      animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- Presentation Header -->
+  <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md px-6 py-4 flex flex-col md:flex-row md:items-center justify-between sticky top-0 z-40 gap-4">
+    <div class="flex items-center space-x-3">
+      <div class="bg-[#25D366] text-slate-950 p-2.5 rounded-xl flex items-center justify-center shadow-lg shadow-[#25d366]/20">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-[2.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-lg font-black tracking-tight text-white">Addy Fitness Presentation Suite</h1>
+          <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-bold uppercase">WABA Portal</span>
+        </div>
+        <p class="text-xs text-slate-400 mt-0.5">High-Conversion Intake Scheduling, Multi-Level Section Trees & Secured UPI checkout Flows</p>
+      </div>
+    </div>
+
+    <!-- Toolbar controls -->
+    <div class="flex items-center gap-3">
+      <button onclick="toggleDarkMode()" id="themeBtn" class="px-4 py-2 rounded-xl border text-xs font-bold transition bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-750">
+        ☀️ Switch to Light WhatsApp
+      </button>
+      <button onclick="resetFlow()" class="flex items-center gap-1.5 px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl text-xs font-black transition shadow-md shadow-emerald-500/10">
+        <i data-lucide="refresh-cw" class="h-3.5 w-3.5 stroke-[3]"></i>
+        Restart Flow
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Grid Workspace -->
+  <main class="flex-1 w-full max-w-[1600px] mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 overflow-hidden">
+    
+    <!-- Left-Hand Control & Walkthrough panel (5 Columns) -->
+    <section class="lg:col-span-5 flex flex-col space-y-5">
+      
+      <!-- Walkthrough Guide Block -->
+      <div class="bg-slate-900 border border-slate-850 p-5 rounded-2xl">
+        <h2 class="text-sm font-bold flex items-center gap-2 text-emerald-400 mb-3">
+          <i data-lucide="sparkles" class="w-4.5 h-4.5"></i>
+          Flow Step Walkthrough Deck
+        </h2>
+        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+          Follow this structured sequence to test the entire client experience. Tapping steps allows you to inspect variable capturing and billing categories dynamically.
+        </p>
+        
+        <div class="space-y-2">
+          <!-- Step 1 to 6 interactive trackers -->
+          <div id="step-welcome" class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs flex items-center justify-between transition-all">
+            <span class="font-medium text-slate-200">Step 1: Welcome & Category Selection</span>
+            <span class="text-[9px] font-black uppercase text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10">Active</span>
+          </div>
+          <div id="step-subsection" class="p-3 rounded-xl bg-slate-950 border border-slate-850 text-xs flex items-center justify-between text-slate-400 transition-all">
+            <span class="font-medium">Step 2: Sub-category Targeting</span>
+            <span class="text-[9px] font-semibold text-slate-500 uppercase">Pending</span>
+          </div>
+          <div id="step-challenge" class="p-3 rounded-xl bg-slate-950 border border-slate-850 text-xs flex items-center justify-between text-slate-400 transition-all">
+            <span class="font-medium">Step 3: Specific Concern Mapping (Nutrition Only)</span>
+            <span class="text-[9px] font-semibold text-slate-500 uppercase">Pending</span>
+          </div>
+          <div id="step-flow" class="p-3 rounded-xl bg-slate-950 border border-slate-850 text-xs flex items-center justify-between text-slate-400 transition-all">
+            <span class="font-medium">Step 4: Single-Screen Scheduling Form</span>
+            <span class="text-[9px] font-semibold text-slate-500 uppercase">Pending</span>
+          </div>
+          <div id="step-checkout" class="p-3 rounded-xl bg-slate-950 border border-slate-850 text-xs flex items-center justify-between text-slate-400 transition-all">
+            <span class="font-medium">Step 5: Dynamic Invoice & UPI Payment Gateway</span>
+            <span class="text-[9px] font-semibold text-slate-500 uppercase">Pending</span>
+          </div>
+          <div id="step-confirmed" class="p-3 rounded-xl bg-slate-950 border border-slate-850 text-xs flex items-center justify-between text-slate-400 transition-all">
+            <span class="font-medium">Step 6: Verified Confirmation & Web CTA Redirect</span>
+            <span class="text-[9px] font-semibold text-slate-500 uppercase">Pending</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Variables captured -->
+      <div class="bg-slate-900 border border-slate-850 p-5 rounded-2xl flex flex-col justify-between flex-1">
+        <div>
+          <h3 class="text-sm font-bold flex items-center gap-2 text-slate-200 mb-3">
+            <i data-lucide="check-square" class="w-4 h-4 text-emerald-400"></i>
+            Live Parameter Variable Vault
+          </h3>
+          <p class="text-xs text-slate-500 mb-4 leading-normal">
+            As values are typed or selected within the WhatsApp flow, variables register instantly here.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-3 text-[11px] mb-4">
+            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-850">
+              <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">🎯 Selected Program</span>
+              <span id="var-service" class="font-bold text-white mt-0.5 block truncate">🥗 Nutrition & Weight</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-850">
+              <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">🔍 Focus Area</span>
+              <span id="var-sub" class="font-bold text-white mt-0.5 block truncate">Weight Loss</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-850 col-span-2">
+              <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">💥 Visceral Challenge</span>
+              <span id="var-challenge" class="font-bold text-emerald-400 mt-0.5 block truncate">Belly Fat</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-850">
+              <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">👤 Client Name</span>
+              <span id="var-name" class="font-bold text-white mt-0.5 block truncate">—</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-850">
+              <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">📞 Phone</span>
+              <span id="var-phone" class="font-bold text-white mt-0.5 block truncate">—</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-850">
+              <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">✉️ Email</span>
+              <span id="var-email" class="font-bold text-white mt-0.5 block truncate">—</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-850">
+              <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">📅 Appointment Date</span>
+              <span id="var-date" class="font-bold text-cyan-400 mt-0.5 block truncate">—</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-850 col-span-2">
+              <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">⏰ Appointed Interval Slot</span>
+              <span id="var-time" class="font-bold text-cyan-400 mt-0.5 block truncate">Morning (9 AM – 12 PM)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dev Sandbox payload -->
+        <div class="p-4 bg-slate-950 rounded-xl border border-slate-850">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs font-bold text-slate-400">Current Flow State Payload</span>
+            <button onclick="copyPayload()" class="text-[10px] bg-slate-800 hover:bg-slate-700 text-white px-2 py-0.5 rounded transition">
+              Copy JSON
+            </button>
+          </div>
+          <pre id="payload-sandbox" class="text-[10px] font-mono text-emerald-400 max-h-24 overflow-y-auto style-scrollbar leading-relaxed">{}</pre>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Right-Hand Immersive WhatsApp Mobile Client (7 Columns) -->
+    <section class="lg:col-span-7 flex flex-col items-center justify-center">
+      
+      <!-- Realistic Phone Frame Mockup -->
+      <div id="phone-frame" class="w-full max-w-[410px] h-screen md:h-[820px] bg-[#0b141a] text-slate-100 md:rounded-[44px] md:border-[12px] md:border-slate-900 md:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] relative flex flex-col overflow-hidden transition-all duration-300">
+        
+        <!-- Physical Speaker/Notch Overlay -->
+        <div class="hidden md:block absolute top-0 left-1/2 transform -translate-x-1/2 w-44 h-7 bg-slate-900 rounded-b-3xl z-40"></div>
+
+        <!-- Mobile Phone Status Bar -->
+        <div id="status-bar" class="px-6 pt-3 pb-1 flex justify-between items-center text-xs font-bold relative z-30 transition-colors bg-[#202c33] text-slate-300">
+          <span>12:00</span>
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+            <span class="text-[10px]">5G</span>
+            <i data-lucide="battery" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <!-- WhatsApp Header -->
+        <div id="wa-header" class="h-16 px-3 flex items-center justify-between shadow-md relative z-30 transition-colors bg-[#202c33] border-b border-[#2d3a42] text-white">
+          <div class="flex items-center space-x-2">
+            <i data-lucide="arrow-left" onclick="resetFlow()" class="h-5 w-5 cursor-pointer opacity-90 hover:opacity-100"></i>
+            <div class="relative">
+              <div class="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white font-black text-sm shadow-sm">AF</div>
+              <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#25D366] border-2 border-[#202c33] rounded-full animate-pulse"></span>
+            </div>
+            <div class="pl-1 leading-tight">
+              <div class="flex items-center gap-1">
+                <span class="text-sm font-black text-white">Addy Fitness</span>
+                <span class="w-3.5 h-3.5 bg-emerald-500 text-[#111b21] rounded-full flex items-center justify-center font-bold text-[8px] scale-90">✓</span>
+              </div>
+              <span class="text-[10px] text-emerald-400">online</span>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <i data-lucide="video" class="h-5 w-5 opacity-90 cursor-pointer"></i>
+            <i data-lucide="phone" class="h-4.5 w-4.5 opacity-90 cursor-pointer"></i>
+            <i data-lucide="more-vertical" class="h-5 w-5 opacity-90 cursor-pointer"></i>
+          </div>
+        </div>
+
+        <!-- Active Chat Scroll Zone -->
+        <div id="chat-canvas" class="flex-1 overflow-y-auto px-4 py-4 flex flex-col space-y-3 relative style-scrollbar bg-[#0b141a]">
+          <!-- WhatsApp Watermark Doodle texture loaded programmatically via CSS style -->
+          <div id="watermark-pattern" class="absolute inset-0 pointer-events-none opacity-[0.05] bg-[radial-gradient(#25d366_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          
+          <div id="encryption-badge" class="text-[10px] bg-[#182229] text-[#aebac1] border border-[#222c30] self-center px-3 py-1 rounded-md shadow-sm z-10 text-center tracking-wider font-bold">
+            TODAY • SECURED WITH END-TO-END ENCRYPTION
+          </div>
+
+          <!-- Dynamic chat thread logs container -->
+          <div id="message-container" class="flex flex-col space-y-3 relative z-10"></div>
+          
+          <!-- Typing indicators bubble -->
+          <div id="typing-indicator" class="self-start max-w-[85%] rounded-2xl rounded-tl-none p-3.5 flex items-center space-x-1 shadow-sm z-10 border bg-[#202c33] border-[#2d3a42] hidden">
+            <span class="w-1.5 h-1.5 bg-[#25D366] rounded-full animate-bounce" style="animation-delay: 100ms"></span>
+            <span class="w-1.5 h-1.5 bg-[#25D366] rounded-full animate-bounce" style="animation-delay: 200ms"></span>
+            <span class="w-1.5 h-1.5 bg-[#25D366] rounded-full animate-bounce" style="animation-delay: 300ms"></span>
+          </div>
+        </div>
+
+        <!-- Mobile Chat Footer -->
+        <div id="chat-footer" class="p-2 px-3 flex items-center space-x-2 relative z-20 bg-[#0b141a]">
+          <div id="input-wrap" class="flex-1 rounded-full flex items-center px-3.5 py-1.5 border border-transparent shadow-sm bg-[#202c33]">
+            <i data-lucide="smile" class="h-5.5 w-5.5 text-slate-400 mr-2"></i>
+            <input
+              type="text"
+              id="user-input"
+              disabled
+              placeholder="Use interactive options above..."
+              class="flex-1 bg-transparent border-none text-[13px] text-slate-500 focus:outline-none w-full font-medium cursor-not-allowed"
+            />
+            <i data-lucide="paperclip" class="h-5 w-5 text-slate-400 mx-1.5"></i>
+            <i data-lucide="camera" class="h-5 w-5 text-slate-400"></i>
+          </div>
+          <button type="button" class="w-11 h-11 rounded-full flex items-center justify-center bg-[#202c33] text-slate-400">
+            <i data-lucide="mic" class="h-5 w-5"></i>
+          </button>
+        </div>
+
+        <!-- Interactive UPI Checkout drawer overlay -->
+        <div id="upi-sheet" class="absolute inset-0 bg-black/60 z-50 flex flex-col justify-end hidden">
+          <!-- Click out boundary -->
+          <div class="flex-1" onclick="toggleUPIDrawer(false)"></div>
+          <div id="upi-container" class="rounded-t-3xl max-h-[460px] w-full p-6 animate-slide-up flex flex-col bg-[#121b22] text-slate-100">
+            
+            <div class="w-12 h-1.5 bg-slate-500/30 rounded-full mx-auto mb-5"></div>
+            
+            <div class="flex justify-between items-start mb-6">
+              <div>
+                <span class="text-[11px] text-slate-400 uppercase tracking-widest font-black block">PAYEE</span>
+                <h4 class="text-sm font-bold flex items-center gap-1.5 text-white">
+                  Addy Fitness Private Limited
+                  <span class="w-4 h-4 bg-emerald-500 text-slate-900 rounded-full flex items-center justify-center text-[9px] font-bold">✓</span>
+                </h4>
+                <span class="text-xs text-slate-500 block mt-0.5">Secure Razorpay Gateway</span>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] text-slate-400 uppercase tracking-widest font-black block">AMOUNT</span>
+                <span class="text-xl font-black text-[#25D366]">₹115.00</span>
+              </div>
+            </div>
+
+            <!-- Selection apps list -->
+            <div id="upi-options" class="space-y-2.5">
+              <button onclick="executeUPITransaction('Google Pay')" class="w-full p-3.5 rounded-xl border flex items-center justify-between text-left transition-all active:scale-[0.98] bg-[#1e2730]/60 border-slate-700/50 hover:bg-[#1e2730]">
+                <span class="text-xs font-black flex items-center gap-2 text-slate-200">
+                  <span class="w-6 h-6 rounded bg-slate-100 flex items-center justify-center text-[10px] font-black text-blue-600">G</span>
+                  Google Pay
+                </span>
+                <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded font-bold">Fast UPI</span>
+              </button>
+
+              <button onclick="executeUPITransaction('PhonePe')" class="w-full p-3.5 rounded-xl border flex items-center justify-between text-left transition-all active:scale-[0.98] bg-[#1e2730]/60 border-slate-700/50 hover:bg-[#1e2730]">
+                <span class="text-xs font-black flex items-center gap-2 text-slate-200">
+                  <span class="w-6 h-6 rounded bg-purple-600 flex items-center justify-center text-[10px] font-black text-white">P</span>
+                  PhonePe UPI
+                </span>
+                <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded font-bold">Fast UPI</span>
+              </button>
+
+              <button onclick="executeUPITransaction('Paytm')" class="w-full p-3.5 rounded-xl border flex items-center justify-between text-left transition-all active:scale-[0.98] bg-[#1e2730]/60 border-slate-700/50 hover:bg-[#1e2730]">
+                <span class="text-xs font-black flex items-center gap-2 text-slate-200">
+                  <span class="w-6 h-6 rounded bg-sky-500 flex items-center justify-center text-[10px] font-black text-white">Py</span>
+                  Paytm Checkout
+                </span>
+                <span class="text-[10px] text-emerald-400 bg-[#25D366]/10 px-2 py-0.5 rounded font-bold">Fast UPI</span>
+              </button>
+            </div>
+
+            <!-- Processing visual template loader -->
+            <div id="upi-processing" class="flex-1 py-12 flex flex-col items-center justify-center text-center hidden">
+              <div class="w-12 h-12 rounded-full border-4 border-emerald-500 border-t-transparent animate-spin mb-4"></div>
+              <h5 class="text-sm font-bold text-white">Authorizing UPI Transaction...</h5>
+              <p class="text-xs text-slate-400 mt-1">Please do not exit or click back</p>
+            </div>
+
+            <!-- Approved template status -->
+            <div id="upi-success" class="flex-1 py-12 flex flex-col items-center justify-center text-center hidden">
+              <div class="w-14 h-14 bg-emerald-500 text-[#0b141a] rounded-full flex items-center justify-center mb-4 shadow-lg shadow-emerald-500/20">
+                <i data-lucide="check-circle-2" class="w-8 h-8 stroke-[2.5]"></i>
+              </div>
+              <h5 class="text-base font-black text-[#25D366]">Payment Approved</h5>
+              <p class="text-xs text-slate-300 mt-1">Redirecting to Addy Fitness...</p>
+            </div>
+
+            <div class="mt-5 text-center">
+              <span class="text-[10px] text-slate-500 block">UPI Transaction Shield Verified • Secure Razorpay Node</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Script logics implementation -->
+  <script>
+    // State Manager Object
+    const state = {
+      darkMode: true,
+      currentNode: 'welcome',
+      selectedService: '🥗 Nutrition & Weight Management',
+      selectedSubsection: 'Weight Loss',
+      selectedChallenge: 'Belly Fat',
+      formFields: {
+        name: 'Rohit Verma',
+        phone: '+91 98765 43210',
+        email: 'rohit@addyfitness.com',
+        age: '29',
+        weight: '82 kg',
+        height: '178 cm',
+        concern: 'Looking to manage metabolic health and reduce belly fat.',
+        date: new Date(Date.now() + 86400000).toISOString().split('T')[0], // Default tomorrow
+        time: 'Morning (9 AM – 12 PM)'
+      },
+      formSubmitted: false
+    };
+
+    const structure = {
+      '🥗 Nutrition & Weight Management': {
+        subs: [
+          'Weight Loss', 'Weight Gain', 'PCOS Management', 'Diabetes Nutrition', 
+          'Thyroid Management', 'Pregnancy Nutrition', 'Child Nutrition', 'Senior Nutrition'
+        ],
+        challenges: {
+          'Weight Loss': ['Belly Fat', 'Weight Not Reducing', 'Weight Regain', 'Slow Metabolism', 'Not Sure'],
+          'Weight Gain': ['Healthy Weight Gain', 'Muscle Gain', 'Poor Appetite', 'General Nutrition'],
+          'PCOS Management': ['Irregular Periods', 'Weight Gain', 'Acne', 'Hair Fall', 'Fertility Concerns'],
+          'Diabetes Nutrition': ['Type 1 Diabetes', 'Type 2 Diabetes', 'Prediabetes', 'Not Sure'],
+          'Thyroid Management': ['Hypothyroidism', 'Hyperthyroidism', 'Not Diagnosed Yet'],
+          'Pregnancy Nutrition': ['First Trimester', 'Second Trimester', 'Third Trimester'],
+          'Child Nutrition': ['0-5 Years', '6-12 Years', '13-18 Years'],
+          'Senior Nutrition': ['Diabetes', 'Heart Health', 'Bone Health', 'General Wellness']
+        }
+      },
+      '🏋️ Fitness & Training Program': {
+        subs: ['Fat Loss Training', 'Strength Training', 'Cardio Fitness', 'Yoga', 'Custom Training Plan'],
+        challenges: {}
+      },
+      '🩺 Doctor Consultation': {
+        subs: ['General Physician', 'Gynecologist', 'Endocrinologist', 'Mental Health Expert', 'Specialist Consultation'],
+        challenges: {}
+      },
+      '💼 Franchise & Business Opportunity': {
+        subs: ['Open Franchise', 'Managing Partner Program', 'Learn Business Model', 'Investment Details'],
+        challenges: {}
+      }
+    };
+
+    const doctorTimeSlots = [
+      '09:00 AM – 09:30 AM', '09:30 AM – 10:00 AM', '10:00 AM – 10:30 AM', '10:30 AM – 11:00 AM',
+      '11:00 AM – 11:30 AM', '11:30 AM – 12:00 PM', '12:00 PM – 12:30 PM', '12:30 PM – 01:00 PM',
+      '01:00 PM – 01:30 PM', '01:30 PM – 02:00 PM', '02:00 PM – 02:30 PM', '02:30 PM – 03:00 PM',
+      '03:00 PM – 03:30 PM', '03:30 PM – 04:00 PM', '04:00 PM – 04:30 PM', '04:30 PM – 05:00 PM',
+      '05:00 PM – 05:30 PM', '05:30 PM – 06:00 PM'
+    ];
+
+    const standardTimeSlots = [
+      'Morning (9 AM – 12 PM)', 'Afternoon (12 PM – 4 PM)', 'Evening (4 PM – 8 PM)'
+    ];
+
+    // Helper functions
+    const isPaidService = (srv) => srv.includes('🩺') || srv.includes('Doctor');
+    const isBusinessService = (srv) => srv.includes('💼') || srv.includes('Franchise') || srv.includes('Business');
+
+    // DOM On Load Initializer
+    window.onload = function() {
+      lucide.createIcons();
+      resetFlow();
+    };
+
+    function toggleDarkMode() {
+      state.darkMode = !state.darkMode;
+      const phone = document.getElementById('phone-frame');
+      const header = document.getElementById('wa-header');
+      const status = document.getElementById('status-bar');
+      const footer = document.getElementById('chat-footer');
+      const inputWrap = document.getElementById('input-wrap');
+      const canvas = document.getElementById('chat-canvas');
+      const badge = document.getElementById('encryption-badge');
+      const themeBtn = document.getElementById('themeBtn');
+
+      if (state.darkMode) {
+        phone.className = "w-full max-w-[410px] h-screen md:h-[820px] bg-[#0b141a] text-slate-100 md:rounded-[44px] md:border-[12px] md:border-slate-900 md:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)] relative flex flex-col overflow-hidden transition-all duration-300";
+        header.className = "h-16 px-3 flex items-center justify-between shadow-md relative z-30 transition-colors bg-[#202c33] border-b border-[#2d3a42] text-white";
+        status.className = "px-6 pt-3 pb-1 flex justify-between items-center text-xs font-bold relative z-30 transition-colors bg-[#202c33] text-slate-300";
+        footer.className = "p-2 px-3 flex items-center space-x-2 relative z-20 bg-[#0b141a]";
+        inputWrap.className = "flex-1 rounded-full flex items-center px-3.5 py-1.5 border border-transparent shadow-sm bg-[#202c33]";
+        canvas.className = "flex-1 overflow-y-auto px-4 py-4 flex flex-col space-y-3 relative style-scrollbar bg-[#0b141a]";
+        badge.className = "text-[10px] bg-[#182229] text-[#aebac1] border border-[#222c30] self-center px-3 py-1 rounded-md shadow-sm z-10 text-center tracking-wider font-bold";
+        themeBtn.innerText = "☀️ Switch to Light WhatsApp";
+      } else {
+        phone.className = "w-full max-w-[410px] h-screen md:h-[820px] bg-[#efeae2] text-slate-900 md:rounded-[44px] md:border-[12px] md:border-slate-900 md:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] relative flex flex-col overflow-hidden transition-all duration-300";
+        header.className = "h-16 px-3 flex items-center justify-between shadow-md relative z-30 transition-colors bg-[#008069] text-white";
+        status.className = "px-6 pt-3 pb-1 flex justify-between items-center text-xs font-bold relative z-30 transition-colors bg-[#008069] text-white";
+        footer.className = "p-2 px-3 flex items-center space-x-2 relative z-20 bg-[#f0f2f5]";
+        inputWrap.className = "flex-1 rounded-full flex items-center px-3.5 py-1.5 border border-transparent shadow-sm bg-white";
+        canvas.className = "flex-1 overflow-y-auto px-4 py-4 flex flex-col space-y-3 relative style-scrollbar bg-[#efeae2]";
+        badge.className = "text-[10px] bg-[#e1f3f0] text-[#008069] border border-[#cce8e2] self-center px-3 py-1 rounded-md shadow-sm z-10 text-center tracking-wider font-bold";
+        themeBtn.innerText = "🌙 Switch to Dark WhatsApp";
+      }
+
+      // Re-trigger current node elements renders with matching active style themes
+      reRenderCurrentChatState();
+    }
+
+    function reRenderCurrentChatState() {
+      // Force rewrite options containers background styling for light/dark
+      document.querySelectorAll('.opt-button').forEach(btn => {
+        if (state.darkMode) {
+          btn.className = "opt-button w-full text-left font-bold px-4 py-3 rounded-xl text-xs transition-all active:scale-[0.98] flex items-center justify-between group shadow-sm border bg-[#202c33] border-[#2d3a42] text-emerald-400";
+        } else {
+          btn.className = "opt-button w-full text-left font-bold px-4 py-3 rounded-xl text-xs transition-all active:scale-[0.98] flex items-center justify-between group shadow-sm border bg-white border-slate-200 text-[#008069]";
+        }
+      });
+    }
+
+    function resetFlow() {
+      state.currentNode = 'welcome';
+      state.selectedService = '🥗 Nutrition & Weight Management';
+      state.selectedSubsection = 'Weight Loss';
+      state.selectedChallenge = 'Belly Fat';
+      state.formSubmitted = false;
+      state.formFields = {
+        service: '🥗 Nutrition & Weight Management',
+        subsection: 'Weight Loss',
+        challenge: 'Belly Fat',
+        name: 'Rohit Verma',
+        phone: '+91 98765 43210',
+        email: 'rohit@addyfitness.com',
+        age: '29',
+        weight: '82 kg',
+        height: '178 cm',
+        concern: 'Looking to manage metabolic health and reduce belly fat.',
+        date: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+        time: 'Morning (9 AM – 12 PM)'
+      };
+
+      document.getElementById('message-container').innerHTML = '';
+      document.getElementById('upi-sheet').classList.add('hidden');
+      document.getElementById('upi-processing').classList.add('hidden');
+      document.getElementById('upi-success').classList.add('hidden');
+      document.getElementById('upi-options').classList.remove('hidden');
+
+      updateVariableVault();
+      updateWalkthroughDeck();
+      
+      simulateBotResponse(
+        "Hi 👋\nWelcome to *Addy Fitness*.\n\nGet expert guidance from Doctors, Nutritionists & Healthcare Professionals — all from the comfort of your home, anywhere in India.\n\nHow can we help you today? Please select your target category below:",
+        [
+          { text: '🥗 Nutrition & Weight Management', value: 'nutrition' },
+          { text: '🏋️ Fitness & Training Program', value: 'fitness' },
+          { text: '🩺 Doctor Consultation (₹115)', value: 'doctor' },
+          { text: '💼 Franchise & Business Opportunity', value: 'franchise' }
+        ]
+      );
+    }
+
+    // Dynamic State & Presentation log updates
+    function updateVariableVault() {
+      document.getElementById('var-service').innerText = state.selectedService;
+      document.getElementById('var-sub').innerText = state.selectedSubsection;
+      document.getElementById('var-challenge').innerText = state.selectedChallenge || 'N/A';
+      document.getElementById('var-name').innerText = state.formFields.name || '—';
+      document.getElementById('var-phone').innerText = state.formFields.phone || '—';
+      document.getElementById('var-email').innerText = state.formFields.email || '—';
+      document.getElementById('var-date').innerText = state.formFields.date || '—';
+      document.getElementById('var-time').innerText = state.formFields.time || '—';
+
+      // Refresh Payload sandbox JSON
+      document.getElementById('payload-sandbox').innerText = JSON.stringify({
+        currentNode: state.currentNode.toUpperCase(),
+        formSubmitted: state.formSubmitted,
+        leadData: {
+          program: state.selectedService,
+          subCategory: state.selectedSubsection,
+          visceralChallenge: state.selectedChallenge,
+          clientProfile: {
+            name: state.formFields.name,
+            phone: state.formFields.phone,
+            email: state.formFields.email,
+            age: state.formFields.age,
+            weight: state.formFields.weight,
+            height: state.formFields.height
+          },
+          appointment: {
+            date: state.formFields.date,
+            time: state.formFields.time
+          }
+        }
+      }, null, 2);
+    }
+
+    function updateWalkthroughDeck() {
+      // Clear statuses
+      const steps = ['welcome', 'subsection', 'challenge', 'flow', 'checkout', 'confirmed'];
+      steps.forEach(st => {
+        const el = document.getElementById(`step-${st}`);
+        el.className = "p-3 rounded-xl bg-slate-950 border border-slate-850 text-xs flex items-center justify-between text-slate-400 transition-all";
+        el.querySelector('span:last-child').className = "text-[9px] font-semibold text-slate-500 uppercase";
+        el.querySelector('span:last-child').innerText = "Pending";
+      });
+
+      // Highlight active step depending on state context
+      let activeStep = 'welcome';
+      if (state.currentNode === 'sub_selection') activeStep = 'subsection';
+      if (state.currentNode === 'challenge_selection') activeStep = 'challenge';
+      if (state.currentNode === 'intake_flow') activeStep = 'flow';
+      if (state.currentNode === 'invoice_displayed') activeStep = 'checkout';
+      if (state.currentNode === 'payment_confirmed') activeStep = 'confirmed';
+
+      const activeEl = document.getElementById(`step-${activeStep}`);
+      activeEl.className = "p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs flex items-center justify-between transition-all";
+      activeEl.querySelector('span:last-child').className = "text-[9px] font-black uppercase text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10";
+      activeEl.querySelector('span:last-child').innerText = "Active";
+    }
+
+    function simulateBotResponse(text, options = [], delay = 750) {
+      document.getElementById('typing-indicator').classList.remove('hidden');
+      setIsTyping(true);
+
+      setTimeout(() => {
+        document.getElementById('typing-indicator').classList.add('hidden');
+        setIsTyping(false);
+
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const isInvoice = text.includes("📋 *ADDY FITNESS - INTAKE SUMMARY*") || text.includes("📋 *ADDY FITNESS - BUSINESS OPPORTUNITY SUMMARY*");
+
+        let optionsHtml = '';
+        if (options.length > 0) {
+          optionsHtml = `<div class="mt-2 w-full flex flex-col gap-1.5 z-20">`;
+          options.forEach(opt => {
+            const isPay = opt.value === 'pay_now';
+            const isBookingConfirm = opt.value === 'confirm_booking';
+            const isWebsite = opt.value === 'visit_website';
+
+            let btnClass = "";
+            if (isPay) {
+              btnClass = "bg-[#25D366] text-[#0b141a] border-[#25D366] hover:bg-[#20ba56]";
+            } else if (isBookingConfirm) {
+              btnClass = "bg-[#3ca585] text-white border-[#3ca585] hover:bg-[#328e72]";
+            } else if (isWebsite) {
+              btnClass = "bg-[#008069] text-white border-[#008069] hover:bg-[#005e4d]";
+            } else {
+              btnClass = state.darkMode 
+                ? "bg-[#202c33] hover:bg-[#2d3a42] border-[#2d3a42] text-emerald-400" 
+                : "bg-white hover:bg-slate-50 border-slate-200 text-[#008069]";
+            }
+
+            optionsHtml += `
+              <button onclick="handleOptionClick('${opt.text.replace(/'/g, "\\'")}', '${opt.value}')" class="opt-button w-full text-left font-bold px-4 py-3 rounded-xl text-xs transition-all active:scale-[0.98] flex items-center justify-between group shadow-sm border ${btnClass}">
+                <span class="flex items-center gap-1.5">
+                  ${isPay ? '<i data-lucide="credit-card" class="h-3.5 w-3.5"></i>' : ''}
+                  ${isWebsite ? '<i data-lucide="external-link" class="h-3.5 w-3.5"></i>' : ''}
+                  ${opt.text}
+                </span>
+                <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${
+                  isPay ? 'bg-[#0f5327] text-white' : isBookingConfirm ? 'bg-[#1b4e3e] text-white' : isWebsite ? 'bg-[#004d3c] text-white' : state.darkMode ? 'bg-emerald-950 text-[#25D366]' : 'bg-emerald-5  bg-emerald-50 text-[#008069]'
+                }">➔</span>
+              </button>
+            `;
+          });
+          optionsHtml += `</div>`;
+        }
+
+        const msgHtml = `
+          <div class="flex flex-col max-w-[85%] z-10 self-start items-start animate-slide-up">
+            <div class="p-3 rounded-2xl text-[13px] leading-relaxed shadow-sm relative rounded-tl-none border ${
+              isInvoice
+                ? state.darkMode 
+                  ? 'bg-[#1e2d35] text-[#e9edef] border-2 border-[#25D366]/40 shadow-md' 
+                  : 'bg-white text-[#111b21] border-2 border-[#008069]/40 shadow-md'
+                : state.darkMode 
+                  ? 'bg-[#202c33] text-[#e9edef] border-[#2d3a42]' 
+                  : 'bg-white text-[#111b21] border-slate-100'
+            }">
+              <p class="whitespace-pre-wrap">${formatMarkdown(text)}</p>
+              <div class="flex items-center justify-end space-x-1 mt-1 opacity-60 text-right">
+                <span class="text-[9px] block">${time}</span>
+              </div>
+            </div>
+            ${optionsHtml}
+          </div>
+        `;
+
+        document.getElementById('message-container').insertAdjacentHTML('beforeend', msgHtml);
+        lucide.createIcons();
+        scrollChatToBottom();
+      }, delay);
+    }
+
+    function appendUserMessage(text) {
+      const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const msgHtml = `
+        <div class="flex flex-col max-w-[85%] z-10 self-end items-end animate-slide-up">
+          <div class="p-3 rounded-2xl text-[13px] leading-relaxed shadow-sm relative rounded-tr-none ${
+            state.darkMode 
+              ? 'bg-[#005c4b] text-[#e9edef]' 
+              : 'bg-[#d9fdd3] text-[#111b21]'
+          }">
+            <p class="whitespace-pre-wrap">${text}</p>
+            <div class="flex items-center justify-end space-x-1 mt-1 opacity-60 text-right">
+              <span class="text-[9px] block">${time}</span>
+              <i data-lucide="check-check" class="h-3.5 w-3.5 text-[#53bdeb]"></i>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('message-container').insertAdjacentHTML('beforeend', msgHtml);
+      lucide.createIcons();
+      scrollChatToBottom();
+    }
+
+    function formatMarkdown(text) {
+      // Replace *bold* with <strong>bold</strong>
+      return text.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+    }
+
+    function scrollChatToBottom() {
+      const canvas = document.getElementById('chat-canvas');
+      canvas.scrollTop = canvas.scrollHeight;
+    }
+
+    function setIsTyping(val) {
+      isTyping = val;
+    }
+
+    // Handle Quick Reply Action Buttons
+    function handleOptionClick(text, value) {
+      appendUserMessage(text);
+
+      // Level 1: Category Selection Routing
+      if (
+        value === 'nutrition' || 
+        value === 'fitness' || 
+        value === 'doctor' || 
+        value === 'franchise'
+      ) {
+        const serviceLabels = {
+          nutrition: '🥗 Nutrition & Weight Management',
+          fitness: '🏋️ Fitness & Training Program',
+          doctor: '🩺 Doctor Consultation',
+          franchise: '💼 Franchise & Business Opportunity'
+        };
+        
+        const chosenService = serviceLabels[value];
+        state.selectedService = chosenService;
+        state.selectedSubsection = structure[chosenService].subs[0];
+        state.currentNode = 'sub_selection';
+        
+        updateVariableVault();
+        updateWalkthroughDeck();
+
+        const subOptions = structure[chosenService].subs.map(sub => ({
+          text: sub,
+          value: `sub_${sub.toLowerCase().replace(/\s+/g, '_')}`
+        }));
+
+        simulateBotResponse(
+          `Great! Please select your specific area under *${chosenService}*:`,
+          subOptions
+        );
+      } 
+      // Level 2: Sub-category selection Routing
+      else if (value.startsWith('sub_')) {
+        state.selectedSubsection = text;
+        const currentService = state.selectedService;
+        
+        updateVariableVault();
+
+        const challengeList = structure[currentService].challenges?.[text];
+
+        if (challengeList && challengeList.length > 0) {
+          state.currentNode = 'challenge_selection';
+          updateWalkthroughDeck();
+
+          const challengeOptions = challengeList.map(ch => ({
+            text: ch,
+            value: `challenge_${ch.toLowerCase().replace(/\s+/g, '_')}`
+          }));
+
+          simulateBotResponse(
+            `What describes your biggest challenge or target with *${text}*?`,
+            challengeOptions
+          );
+        } else {
+          // Launch the Form card
+          state.currentNode = 'intake_flow';
+          updateWalkthroughDeck();
+
+          const isPaid = isPaidService(currentService);
+          const defaultTime = isPaid ? doctorTimeSlots[0] : standardTimeSlots[0];
+          state.selectedChallenge = 'N/A';
+          state.formFields.time = defaultTime;
+          
+          updateVariableVault();
+          renderFlowFormCard();
+        }
+      } 
+      // Level 3: Nutrition Deep Challenges Routing
+      else if (value.startsWith('challenge_')) {
+        state.selectedChallenge = text;
+        state.currentNode = 'intake_flow';
+        
+        const isPaid = isPaidService(state.selectedService);
+        const defaultTime = isPaid ? doctorTimeSlots[0] : standardTimeSlots[0];
+        state.formFields.time = defaultTime;
+
+        updateVariableVault();
+        updateWalkthroughDeck();
+        renderFlowFormCard();
+      }
+      // Action triggers: Payment, direct submission, restarts, site actions
+      else if (value === 'pay_now') {
+        toggleUPIDrawer(true);
+      } else if (value === 'confirm_booking') {
+        triggerBookingConfirmation();
+      } else if (value === 'visit_website') {
+        window.open('https://addyfitness.com', '_blank');
+      } else if (value === 'restart_bot') {
+        resetFlow();
+      }
+    }
+
+    // Render WhatsApp Flow Form Card inside chat Canvas
+    function renderFlowFormCard() {
+      const isPaid = isPaidService(state.selectedService);
+      const isBusiness = isBusinessService(state.selectedService);
+
+      simulateBotResponse(
+        `Got it! Let's reserve your slot. ${isPaid ? '(Clinical Fee: ₹115)' : ''}\n\n📝 Please fill in your details directly in the secure form card below:`
+      );
+
+      setTimeout(() => {
+        const programOptions = Object.keys(structure).map(srv => {
+          return `<option value="${srv}" ${state.selectedService === srv ? 'selected' : ''}>${srv}</option>`;
+        }).join('');
+
+        const subOptions = structure[state.selectedService].subs.map(sub => {
+          return `<option value="${sub}" ${state.selectedSubsection === sub ? 'selected' : ''}>${sub}</option>`;
+        }).join('');
+
+        let challengeSelectorHtml = '';
+        const challengeList = structure[state.selectedService].challenges?.[state.selectedSubsection];
+        if (!isBusiness && challengeList && challengeList.length > 0) {
+          const chOptions = challengeList.map(ch => {
+            return `<option value="${ch}" ${state.selectedChallenge === ch ? 'selected' : ''}>${ch}</option>`;
+          }).join('');
+
+          challengeSelectorHtml = `
+            <div>
+              <label class="text-[10px] font-bold text-slate-400 block mb-1">SPECIFIC CHALLENGE *</label>
+              <select id="form-challenge" onchange="handleFormSelectChange('challenge', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                state.darkMode 
+                  ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' 
+                  : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+              }">
+                ${chOptions}
+              </select>
+            </div>
+          `;
+        }
+
+        const timeSlots = isPaid ? doctorTimeSlots : standardTimeSlots;
+        const timeOptions = timeSlots.map(slot => {
+          return `<option value="${slot}" ${state.formFields.time === slot ? 'selected' : ''}>${slot}</option>`;
+        }).join('');
+
+        const formCardHtml = `
+          <div id="flow-form-card" class="self-start max-w-[90%] w-full z-20 mt-1 animate-slide-up">
+            <div class="p-4 rounded-2xl rounded-tl-none shadow-lg border ${
+              state.darkMode 
+                ? 'bg-[#1f2c34] border-[#2e3b43] text-slate-100' 
+                : 'bg-white border-slate-200 text-slate-800'
+            }">
+              <div class="pb-3 border-b border-slate-700/30 mb-4">
+                <h4 class="text-[13px] font-bold text-[#25D366] flex items-center gap-1.5">
+                  <i data-lucide="check-square" class="w-4 h-4"></i> Addy Fitness Intake Flow
+                </h4>
+                <p class="text-[11px] text-slate-400 mt-0.5">Please provide appointment details:</p>
+              </div>
+
+              <form onsubmit="submitIntakeForm(event)" class="space-y-3.5">
+                <div>
+                  <label class="text-[10px] font-bold text-slate-400 block mb-1">SELECTED PROGRAM *</label>
+                  <select id="form-service" onchange="handleFormSelectChange('service', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                    state.darkMode 
+                      ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' 
+                      : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                  }">
+                    ${programOptions}
+                  </select>
+                </div>
+
+                <div>
+                  <label class="text-[10px] font-bold text-slate-400 block mb-1">FOCUS AREA *</label>
+                  <select id="form-subsection" onchange="handleFormSelectChange('subsection', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                    state.darkMode 
+                      ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' 
+                      : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                  }">
+                    ${subOptions}
+                  </select>
+                </div>
+
+                ${challengeSelectorHtml}
+
+                <div>
+                  <label class="text-[10px] font-bold text-slate-400 block mb-1">NAME *</label>
+                  <input type="text" required placeholder="e.g. Rahul Sharma" value="${state.formFields.name}" oninput="handleFormInputChange('name', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                    state.darkMode ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                  }" />
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div>
+                    <label class="text-[10px] font-bold text-slate-400 block mb-1">PHONE NUMBER *</label>
+                    <input type="tel" required placeholder="e.g. +91 9876543210" value="${state.formFields.phone}" oninput="handleFormInputChange('phone', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                      state.darkMode ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                    }" />
+                  </div>
+                  <div>
+                    <label class="text-[10px] font-bold text-slate-400 block mb-1">EMAIL ADDRESS *</label>
+                    <input type="email" required placeholder="e.g. rahul@gmail.com" value="${state.formFields.email}" oninput="handleFormInputChange('email', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                      state.darkMode ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                    }" />
+                  </div>
+                </div>
+
+                <!-- Parameters hid dynamically if business service selected -->
+                <div id="param-group" class="${isBusiness ? 'hidden' : ''} space-y-3.5">
+                  <div class="grid grid-cols-2 gap-3">
+                    <div>
+                      <label class="text-[10px] font-bold text-slate-400 block mb-1">AGE *</label>
+                      <input type="number" placeholder="e.g. 28" value="${state.formFields.age}" oninput="handleFormInputChange('age', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                        state.darkMode ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                      }" />
+                    </div>
+                    <div>
+                      <label class="text-[10px] font-bold text-slate-400 block mb-1">WEIGHT</label>
+                      <input type="text" placeholder="e.g. 74 kg" value="${state.formFields.weight}" oninput="handleFormInputChange('weight', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                        state.darkMode ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                      }" />
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3">
+                    <div>
+                      <label class="text-[10px] font-bold text-slate-400 block mb-1">HEIGHT</label>
+                      <input type="text" placeholder="e.g. 172 cm" value="${state.formFields.height}" oninput="handleFormInputChange('height', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                        state.darkMode ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                      }" />
+                    </div>
+                    <div>
+                      <label class="text-[10px] font-bold text-slate-400 block mb-1">DATE *</label>
+                      <input type="date" value="${state.formFields.date}" oninput="handleFormInputChange('date', this.value)" class="w-full px-3 py-1.5 rounded-lg text-xs outline-none border transition ${
+                        state.darkMode ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                      }" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="text-[10px] font-bold text-slate-400 block mb-1">TIME SLOT *</label>
+                    <select id="form-time" onchange="handleFormSelectChange('time', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border transition ${
+                      state.darkMode ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                    }">
+                      ${timeOptions}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="text-[10px] font-bold text-slate-400 block mb-1">BRIEF CONCERN *</label>
+                    <textarea placeholder="e.g. Need clinical diet plan..." rows="2" oninput="handleFormInputChange('concern', this.value)" class="w-full px-3 py-2 rounded-lg text-xs outline-none border resize-none transition ${
+                      state.darkMode ? 'bg-[#2a3942] border-slate-700 text-white focus:border-[#25D366]' : 'bg-slate-50 border-slate-300 text-slate-800 focus:border-[#008069]'
+                    }">${state.formFields.concern}</textarea>
+                  </div>
+                </div >
+
+                <button type="submit" class="w-full bg-[#3ca585] hover:bg-[#328e72] text-white font-bold py-3 px-4 rounded-xl text-xs transition active:scale-[0.98] shadow-md shadow-[#3ca585]/10 mt-1">
+                  Submit Details
+                </button>
+              </form>
+            </div>
+          </div>
+        `;
+
+        document.getElementById('message-container').insertAdjacentHTML('beforeend', formCardHtml);
+        lucide.createIcons();
+        scrollChatToBottom();
+      }, 1000);
+    }
+
+    // Cascading options changes on change actions inside the HTML Form Card
+    function handleFormSelectChange(field, value) {
+      if (field === 'service') {
+        state.selectedService = value;
+        const defaultSub = structure[value].subs[0];
+        state.selectedSubsection = defaultSub;
+        
+        const challengeList = structure[value].challenges?.[defaultSub];
+        state.selectedChallenge = challengeList ? challengeList[0] : 'N/A';
+
+        const isPaid = isPaidService(value);
+        state.formFields.time = isPaid ? doctorTimeSlots[0] : standardTimeSlots[0];
+        state.formFields.service = value;
+
+        // Re-trigger card replacement to sync active dropdown elements
+        removeFormCardNode();
+        renderFlowFormCard();
+      } else if (field === 'subsection') {
+        state.selectedSubsection = value;
+        const challengeList = structure[state.selectedService].challenges?.[value];
+        state.selectedChallenge = challengeList ? challengeList[0] : 'N/A';
+        state.formFields.subsection = value;
+
+        removeFormCardNode();
+        renderFlowFormCard();
+      } else if (field === 'challenge') {
+        state.selectedChallenge = value;
+        state.formFields.challenge = value;
+      } else if (field === 'time') {
+        state.formFields.time = value;
+      }
+      updateVariableVault();
+    }
+
+    function handleFormInputChange(field, value) {
+      state.formFields[field] = value;
+      updateVariableVault();
+    }
+
+    function removeFormCardNode() {
+      const node = document.getElementById('flow-form-card');
+      if (node) node.remove();
+    }
+
+    function submitIntakeForm(e) {
+      e.preventDefault();
+      
+      const isBusiness = isBusinessService(state.selectedService);
+      if (isBusiness) {
+        if (!state.formFields.name || !state.formFields.phone || !state.formFields.email) {
+          alert("Please fill in all mandatory fields.");
+          return;
+        }
+      } else {
+        if (!state.formFields.name || !state.formFields.phone || !state.formFields.email || !state.formFields.age || !state.formFields.concern || !state.formFields.date) {
+          alert("Please fill out all required details.");
+          return;
+        }
+      }
+
+      state.formSubmitted = true;
+      state.currentNode = 'invoice_displayed';
+      removeFormCardNode();
+      updateWalkthroughDeck();
+      updateVariableVault();
+
+      appendUserMessage(`Submitted Intake Form:\nName: ${state.formFields.name}\nPhone: ${state.formFields.phone}\nEmail: ${state.formFields.email}`);
+
+      const isPaid = isPaidService(state.selectedService);
+
+      // summary ticket copies formatting
+      const invoiceText = isBusiness 
+        ? `📋 *ADDY FITNESS - BUSINESS OPPORTUNITY SUMMARY*\n` +
+          `━━━━━━━━━━━━━━━━━━━\n` +
+          `🎯 *Program:* ${state.selectedService}\n` +
+          `🔍 *Subsection:* ${state.selectedSubsection}\n` +
+          `👤 *Name:* ${state.formFields.name}\n` +
+          `📞 *Phone:* ${state.formFields.phone}\n` +
+          `✉️ *Email:* ${state.formFields.email}\n` +
+          `━━━━━━━━━━━━━━━━━━━\n` +
+          `Tap below to finalize your business consultation request.`
+        : `📋 *ADDY FITNESS - INTAKE SUMMARY*\n` +
+          `━━━━━━━━━━━━━━━━━━━\n` +
+          `🎯 *Program:* ${state.selectedService}\n` +
+          `🔍 *Subsection:* ${state.selectedSubsection}\n` +
+          (state.selectedChallenge !== 'N/A' ? `🎯 *Challenge:* ${state.selectedChallenge}\n` : '') +
+          `👤 *Name:* ${state.formFields.name}\n` +
+          `📞 *Phone:* ${state.formFields.phone}\n` +
+          `✉️ *Email:* ${state.formFields.email}\n` +
+          `🎂 *Age:* ${state.formFields.age} Years\n` +
+          `⚖️ *Weight:* ${state.formFields.weight || 'Not Provided'}\n` +
+          `📏 *Height:* ${state.formFields.height || 'Not Provided'}\n` +
+          `📝 *Concern:* ${state.formFields.concern}\n\n` +
+          `📅 *Date:* ${state.formFields.date}\n` +
+          `⏰ *Time Slot:* ${state.formFields.time}\n` +
+          `━━━━━━━━━━━━━━━━━━━\n` +
+          (isPaid 
+            ? `💵 *Fee:* ₹115.00\n━━━━━━━━━━━━━━━━━━━\n\nTap below to pay the ₹115 fee and authorize your appointment.` 
+            : `Tap below to finalize your booking directly.`);
+
+      simulateBotResponse(
+        invoiceText,
+        isPaid 
+          ? [
+              { text: '💳 Pay ₹115 & Confirm Booking', value: 'pay_now' },
+              { text: '❌ Start Over', value: 'restart_bot' }
+            ]
+          : [
+              { text: '✅ Confirm Booking', value: 'confirm_booking' },
+              { text: '❌ Start Over', value: 'restart_bot' }
+            ],
+        1000
+      );
+    }
+
+    // Toggle simulated UPI Bottom Drawer
+    function toggleUPIDrawer(show) {
+      const sheet = document.getElementById('upi-sheet');
+      if (show) {
+        sheet.classList.remove('hidden');
+      } else {
+        sheet.classList.add('hidden');
+      }
+    }
+
+    function executeUPITransaction(app) {
+      setSelectedUPIApp(app);
+      document.getElementById('upi-options').classList.add('hidden');
+      document.getElementById('upi-processing').classList.remove('hidden');
+
+      setTimeout(() => {
+        document.getElementById('upi-processing').classList.add('hidden');
+        document.getElementById('upi-success').classList.remove('hidden');
+
+        setTimeout(() => {
+          triggerPaymentConfirmation(app);
+        }, 1200);
+      }, 2000);
+    }
+
+    function setSelectedUPIApp(app) {
+      selectedUPIApp = app;
+    }
+
+    function triggerPaymentConfirmation(app) {
+      toggleUPIDrawer(false);
+      state.currentNode = 'payment_confirmed';
+      updateWalkthroughDeck();
+
+      simulateBotResponse(
+        `🎉 *Payment Success! Consultation Booked*\n\nThank you, *${state.formFields.name}*!\n\nWe have successfully received your payment of *₹115* via ${app}.\n\nYour clinical doctor consultation is now officially confirmed.\n\n📱 *WHAT HAPPENS NEXT?*\nOur medical health practitioner will call you directly on *${state.formFields.phone}* at *${state.formFields.time}* on *${state.formFields.date}*.\n\n🌐 *Access your dashboard:* addyfitness.com\n\nHave a healthy day ahead! 🚀`,
+        [
+          { text: '🔗 Go to addyfitness.com', value: 'visit_website' },
+          { text: '🔄 Book Another Session', value: 'restart_bot' }
+        ]
+      );
+    }
+
+    function triggerBookingConfirmation() {
+      state.currentNode = 'payment_confirmed';
+      updateWalkthroughDeck();
+      
+      const isBusiness = isBusinessService(state.selectedService);
+      const successMessage = isBusiness
+        ? `🎉 *Business Consultation Requested Successfully!*\n\nThank you, *${state.formFields.name}*!\n\nYour business inquiry has been recorded.\n\n📋 *CONFIRMED DETAILS:*\n🎯 *Program:* ${state.selectedService}\n🔍 *Subsection:* ${state.selectedSubsection}\n👤 *Name:* ${state.formFields.name}\n📞 *Phone:* ${state.formFields.phone}\n✉️ *Email:* ${state.formFields.email}\n\nOur Business Development Team will reach out to you directly at *${state.formFields.phone}* or via *${state.formFields.email}* within 24 hours.\n\n🌐 *Visit our website for more details:* addyfitness.com\n\nLet's build a healthier future together! 🚀`
+        : `🎉 *Consultation Booked Successfully!*\n\nThank you, *${state.formFields.name}*!\n\nYour consultation slot has been reserved.\n\n📋 *CONFIRMED DETAILS:*\n🎯 *Program:* ${state.selectedService}\n🔍 *Subsection:* ${state.selectedSubsection}\n📅 *Date:* ${state.formFields.date}\n⏰ *Time:* ${state.formFields.time}\n👤 *Contact:* ${state.formFields.phone}\n\nOur expert advisor will reach out to you directly on this WhatsApp line at the scheduled time. No further action is required.\n\n🌐 *Explore programs at:* addyfitness.com\n\nLet's crush those health goals! 🚀`;
+
+      simulateBotResponse(
+        successMessage,
+        [
+          { text: '🔗 Go to addyfitness.com', value: 'visit_website' },
+          { text: '🔄 Book Another Session', value: 'restart_bot' }
+        ]
+      );
+    }
+
+    // Clipboard Copy Helper
+    function copyPayload() {
+      const payloadText = document.getElementById('payload-sandbox').innerText;
+      
+      // Fallback for document copy restrictions
+      const el = document.createElement('textarea');
+      el.value = payloadText;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+
+      const oldText = state.darkMode ? "Copy JSON" : "Copy JSON";
+      alert("Payload sandbox JSON copied successfully to clipboard!");
+    }
+  </script>
+</body>
+</html>
